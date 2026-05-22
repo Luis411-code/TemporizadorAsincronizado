@@ -1,20 +1,20 @@
-function TempPromise(etiqueta,valor,tiempo) {
-    const respuesta = "El número " + etiqueta + " es par"
+function TempPromise(valor,tiempo) {
+    const respuesta = "El número " + valor + " es par"
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (valor % 2 == 0) {
         resolve(respuesta);
       } else {
-        reject(new Error(`El número ${etiqueta} no es par...NIGA`));
+        reject(new Error(`El número ${valor} no es par`));
       }
     }, tiempo);
   });
 }
 
-async function TempAsync_await(etiqueta,valor) {
+async function TempAsync_await(valor) {
   let resultado = "";
   try {
-    resultado = await TempPromise(etiqueta, valor, 1000);
+    resultado = await TempPromise(valor, 1000);
     console.log(resultado);
   } catch (error) {
     console.error("", error);
@@ -24,5 +24,5 @@ async function TempAsync_await(etiqueta,valor) {
 console.log("Bienvenido al conteno de números Pares usando Async-await");
 console.log();
 for (let i = 0; i < 11; i++) {
-    TempAsync_await(i, i);
+    TempAsync_await(i);
 }
